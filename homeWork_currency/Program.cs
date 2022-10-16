@@ -76,27 +76,29 @@ namespace homeWork_currency
                     }
                     break;
             }
-
-            switch (userInput) 
+            if (userCanConvert == true)
             {
-                case 1:
-                    userUsd += coutCurrency * rubInUsd;
-                    break;
-                case 2:
-                    userJpy += coutCurrency * rubInJpy;
-                    break;
-                case 3:
-                    userRub += coutCurrency * usdInRub;
-                    break;
-                case 4:
-                    userJpy += coutCurrency * usdInJpy;
-                    break;
-                case 5:
-                    userRub += coutCurrency * jpyInRub;
-                    break;
-                case 6:
-                    userUsd += coutCurrency * jpyInUsd;
-                    break;
+                switch (userInput)
+                {
+                    case 1:
+                        userUsd += coutCurrency * rubInUsd;
+                        break;
+                    case 2:
+                        userJpy += coutCurrency * rubInJpy;
+                        break;
+                    case 3:
+                        userRub += coutCurrency * usdInRub;
+                        break;
+                    case 4:
+                        userJpy += coutCurrency * usdInJpy;
+                        break;
+                    case 5:
+                        userRub += coutCurrency * jpyInRub;
+                        break;
+                    case 6:
+                        userUsd += coutCurrency * jpyInUsd;
+                        break;
+                }
             }
 
             Console.WriteLine("Рублей:" + userRub);
