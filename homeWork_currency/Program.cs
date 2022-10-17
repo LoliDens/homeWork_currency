@@ -130,9 +130,6 @@ namespace homeWork_currency
             Console.WriteLine("Долларов:" + userUsd);
             Console.WriteLine("Юаней:" + userJpy);
             Console.ReadKey();
-
-
-
         }
     }
 }
