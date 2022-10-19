@@ -16,6 +16,7 @@ namespace homeWork_currency
             const int CommandRateUsdToJpy = 4;
             const int CommandRateJpyToUsd = 5;
             const int CommandRateJpyToRub = 6;
+            const int CommandIsExit = 7;
 
             float userRub;
             float userJpy;
@@ -33,6 +34,7 @@ namespace homeWork_currency
             int coutCurrency;
             int userInput;
             bool userCanConvert = true;
+            bool isExit = false;
 
 
             Console.Write("Сколько у вас рублей: ");
@@ -42,94 +44,117 @@ namespace homeWork_currency
             Console.Write("Сколько у вас Юаней: ");
             userJpy = Convert.ToSingle(Console.ReadLine());
 
-            Console.WriteLine("Для того чтобы обенять одну валюту на другую нажмите:" +
-                $"\n{CommandRateRubToUsd} - Рубли в доллары" +
-                $"\n{CommandRateRubToJpy} - Рубли в юани" +
-                $"\n{CommandRateUsdToRub} - Доллары в рубли" +
-                $"\n{CommandRateUsdToJpy} - Доллары в юани" +
-                $"\n{CommandRateJpyToRub} - Юани в рубли" +
-                $"\n{CommandRateJpyToUsd} - Юани в даллары");
-            userInput = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Введите колличество валюты которое хотите перевести");
-            coutCurrency = Convert.ToInt32(Console.ReadLine());
-            
-            if (userCanConvert == true)
+            while (isExit == false)
             {
-                switch (userInput)
-                {
-                    case CommandRateRubToUsd:
-                        if (coutCurrency <= userRub) 
-                        {
-                            userUsd += coutCurrency * rateRubToUsd;
-                            userRub -= coutCurrency;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                    case CommandRateRubToJpy:
-                        if (coutCurrency <= userRub)
-                        {
-                            userJpy += coutCurrency * rateRubToJpy;
-                            userRub -= coutCurrency;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                    case CommandRateUsdToRub:
-                        if (coutCurrency <= userUsd)
-                        {
-                            userRub += coutCurrency * rateUsdToRub;
-                            userUsd -= coutCurrency;
-                        }
-                        else 
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                    case CommandRateUsdToJpy: 
-                        if (coutCurrency <= userUsd)
-                        {
-                            userJpy += coutCurrency * rateUsdToJpy;
-                            userUsd -= coutCurrency;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                    case CommandRateJpyToRub:
-                        if (coutCurrency <= userJpy)
-                        {
-                            userRub += coutCurrency * rateJpyToRub;
-                            userJpy -= coutCurrency;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                    case CommandRateJpyToUsd:
-                        if (coutCurrency <= userJpy)
-                        {
-                            userUsd += coutCurrency * rateJpyToUsd;
-                            userJpy -= coutCurrency;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Недостаточно средств для перевода");
-                        }
-                        break;
-                }
-            }
+                Console.WriteLine("Для того чтобы обенять одну валюту на другую нажмите:" +
+                    $"\n{CommandRateRubToUsd} - Рубли в доллары" +
+                    $"\n{CommandRateRubToJpy} - Рубли в юани" +
+                    $"\n{CommandRateUsdToRub} - Доллары в рубли" +
+                    $"\n{CommandRateUsdToJpy} - Доллары в юани" +
+                    $"\n{CommandRateJpyToRub} - Юани в рубли" +
+                    $"\n{CommandRateJpyToUsd} - Юани в даллары" +
+                    $"\n{CommandIsExit} - Выйти из программы");
+                userInput = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Рублей:" + userRub);
-            Console.WriteLine("Долларов:" + userUsd);
-            Console.WriteLine("Юаней:" + userJpy);
-            Console.ReadKey();
+                if (userCanConvert == true)
+                {
+                    switch (userInput)
+                    {
+                        case CommandRateRubToUsd:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userRub)
+                            {
+                                userUsd += coutCurrency * rateRubToUsd;
+                                userRub -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandRateRubToJpy:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userRub)
+                            {
+                                userJpy += coutCurrency * rateRubToJpy;
+                                userRub -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandRateUsdToRub:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userUsd)
+                            {
+                                userRub += coutCurrency * rateUsdToRub;
+                                userUsd -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandRateUsdToJpy:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userUsd)
+                            {
+                                userJpy += coutCurrency * rateUsdToJpy;
+                                userUsd -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandRateJpyToUsd:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userJpy)
+                            {
+                                userRub += coutCurrency * rateJpyToRub;
+                                userJpy -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandRateJpyToRub:
+                            Console.WriteLine("Введите колличество валюты которое хотите перевести");
+                            coutCurrency = Convert.ToInt32(Console.ReadLine());
+
+                            if (coutCurrency <= userJpy)
+                            {
+                                userUsd += coutCurrency * rateJpyToUsd;
+                                userJpy -= coutCurrency;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Недостаточно средств для перевода");
+                            }
+                            break;
+                        case CommandIsExit:
+                            isExit = true;
+                            break;
+                    }
+                }
+
+                Console.WriteLine("Рублей:" + userRub);
+                Console.WriteLine("Долларов:" + userUsd);
+                Console.WriteLine("Юаней:" + userJpy);
+                Console.ReadKey();
+            }
         }
     }
 }
